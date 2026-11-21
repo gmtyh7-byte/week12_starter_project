@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // LAB 1 (Slide 07): useEffect Timer
 export default function Lab1EffectTimer() {
   const [count, setCount] = useState(0);
-  console.log('[LAB 1] rendered');
+  console.log("[LAB 1] rendered");
 
   useEffect(() => {
     // TODO 1: 1초마다 setCount(prev => prev + 1)을 실행할 setInterval 작성
@@ -18,9 +18,13 @@ export default function Lab1EffectTimer() {
 
   return (
     <div>
-      <p className="hint">TODO를 완성하면 1초마다 자동으로 Count가 증가해야 합니다.</p>
+      <p className="hint">
+        TODO를 완성하면 1초마다 자동으로 Count가 증가해야 합니다.
+      </p>
       <div className="count">{count}</div>
-      <p className="hint">Console에서 Render / Effect / Cleanup을 비교하세요.</p>
+      <p className="hint">
+        Console에서 Render / Effect / Cleanup을 비교하세요.
+      </p>
     </div>
   );
 }
