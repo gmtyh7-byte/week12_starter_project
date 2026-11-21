@@ -29,11 +29,45 @@ npm run dev
 - Starter Project 정보
 # Installation: 설치·실행 방법 및 실행 화면
 # Source Code Exploration: 
-## 주요 파일 구조
-## useEffect 및 useRef 분석
-## 주요 코드 2개 설명
-- 
-- 
+## Project Structure: App.jsx와 주요 Lab 컴포넌트의 역할
+1. App.jsx: UI 랜더링, Lab 컴포넌트 동적 마운트, 언마운트
+2. Lab1: UseEffect 사용해서 마운트시 바로 실행되는 카운터 구현
+3. Lab2: running 상태를 Dependency Array에 넣어 타이머 제어
+4. Lab3: useRef로 input Dom에 직접 접근, 포커스 및 초기화 구현
+5. Lab4: ureRef로 타이머 ID 보관, 이벤트 핸들러에서 타이머 제어
+## useEffect: Effect, Dependency Array 및 Cleanup의 동작 원리
+1. Effect: 컴포넌트가 화면에 렌더링된 직후 실행하는 콜백함수
+2. Dependency Array: Effect가 다시 실행되는 순간을 결정하는 배열 
+3. Cleanup: Effect 안에서 반환하는 함수, 다음 Effect 실행전, 컴포넌트 언마운트때 호출
+## useRef: .current 속성과 useState의 차이
+1. .current: useRef 안의 값. 화면 갱신은 안됨
+2. useState와의 차이: useState는 화면에 보이는 값, useRef는 내부에 저장되는 값
+## Code Analysis: useEffect와 useRef 관련 주요 코드 각 1개(5~15줄)를 선택하여 동작 원리 설명
+1. useEffect:
+  useEffect(() => {
+    if (!running) return;
+    
+    const id = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, [running]);
+- running이 false면 if(!running)return; 으로 종료, running 이 true일때 setInterval 등록, prev + 1 fh 1초마다 카운트 1 증가, clearInterval로 타이머 종료, Dependency Array에 running이 들어있고 Start/Stop 버튼으로 running 상태 바뀔때 Effect 동작
+2. useRef:
+  const timerRef = useRef(null);
+
+  const start = () => {
+    if (timerRef.current !== null) return;
+    timerRef.current = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+  };
+
+  const stop = () => {
+    ClearInterval(timerRef.current);
+    timerRef.current = null;
+  };
+  - start 호출때 timeRef.current !== null로 중복시작 검증, 새로운 interval ID timerRef.current에 보관, stop 호출때 timeRef.current에 저장된 ID로 clearInterval 실행 및 timerRef.current null로 초기화
 # Lab Implementation: 4개 Lab 구현 내용 및 실행 결과
 1. 
 2. 
