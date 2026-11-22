@@ -69,18 +69,30 @@ npm run dev
   };
   - start 호출때 timeRef.current !== null로 중복시작 검증, 새로운 interval ID timerRef.current에 보관, stop 호출때 timeRef.current에 저장된 ID로 clearInterval 실행 및 timerRef.current null로 초기화
 # Lab Implementation: 4개 Lab 구현 내용 및 실행 결과
-1. 
-2. 
-3. 
-4. 
+1. dependency array가 []인 useEffect에 setInterval 작성, cleanup함수에 clearInterval(id) 작성, 1초마다 카운트 증가
+2. [running]으로 true일때 타이머 실행 false일때 반환 그리고 리셋 구현, start 클릭시 1초씩 증가 stop 클릭시 멈춤, reset 클릭시 카운트 0으로
+3. useRef(null)로 inputRef 생성, focusInput, clearInput에서 inputRef.current.focus(), inputRef.current.value로 조작, focus 버튼 클릭하면 입력창에 커서, clear 버튼 클릭하면 입력값 지워지고 포커스
+4. timerRef = useRef(null)에 ID저장, start, stop, reset 구현, start,stop,reset기능, useRef로 불필요 렌더링 제거
 # Lab Comparison: STEP 3의 비교 분석 질문 4개에 대한 답변
-1. 
-2. 
-3. 
-4. 
+1. Effect가 실행되는 시점을 결정해 Effect의 쓸모없는 재실행을 제어하기때문에 
+2. 컴포넌트가 언마운트 됨, Effect를 다시 실행 시킬때 이전 setInterval이 종료가 안되서 백그라운드에서 계속 실행됨.
+3. 값 변경시 useState는 컴포넌트 리렌더링, useRef는 값을 유지
+4. Lab 2는 running 상태로 useEffect, cleanup이 타이머 자동 생성, 중지. Lab 4는 useRef에 타이머 ID 저장해 이벤트 핸들러로 타이머 직접 제어.
 # Customizing: 
-- 수정 내용 
-- 파일명
+## 수정 내용
+- 제목 수정
+- 탭별 설명 수정
+- 선택 탭 강조 색상 변경
+- 타이머 폰트 크기, 색상 변경
+- panel에 포인트 라인
+- TimerCount를 분/초 형식으로 표현
+## 파일명
+- App.css
+- App.jsx
+- Lab1_EffectTimer.jsx
+- Lab2_TimerControl.jsx
+- Lab3_inputFocus.jsx
+- Lab4_RefTimper.jsx
 # Deployment: 실제 접근 가능한 Vercel URL
 
 # Weekly Review:

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 // LAB 4 (Slide 17): Timer ID를 useRef로 관리
 export default function Lab4RefTimer() {
@@ -12,16 +12,18 @@ export default function Lab4RefTimer() {
     // TODO 3: setInterval의 반환 ID를 timerRef.current에 보관
     // TODO 4: 1초마다 count 증가, running을 true로 변경
     if (timerRef.current !== null) return;
+    setRunning(true);
     timerRef.current = setInterval(() => {
-      setCount(prev => prev + 1);
+      setCount((prev) => prev + 1);
     }, 1000);
   };
 
   const stop = () => {
     // TODO 5: clearInterval로 타이머 중지
     // TODO 6: timerRef.current를 null로, running은 false로 변경
-    ClearInterval(timerRef.current);
+    clearInterval(timerRef.current);
     timerRef.current = null;
+    setRunning(false);
   };
 
   const reset = () => {
@@ -35,16 +37,30 @@ export default function Lab4RefTimer() {
     return () => clearInterval(timerRef.current);
   }, []);
 
+  const formatTime = (sec) => {
+    const m = String(Math.floor(sec / 60)).padStart(2, "0");
+    const s = String(sec % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  };
+
   return (
     <div>
-      <p className="status">상태: {running ? 'Running' : 'Stopped'}</p>
-      <div className="count">{count}</div>
+      <p className="status">상태: {running ? "Running" : "Stopped"}</p>
+      <div className="count">{formatTime(count)}</div>
       <div className="controls">
-        <button onClick={start} disabled={running}>Start</button>
-        <button className="secondary" onClick={stop} disabled={!running}>Stop</button>
-        <button className="secondary" onClick={reset}>Reset</button>
+        <button onClick={start} disabled={running}>
+          Start
+        </button>
+        <button className="secondary" onClick={stop} disabled={!running}>
+          Stop
+        </button>
+        <button className="secondary" onClick={reset}>
+          Reset
+        </button>
       </div>
-      <p className="hint">Timer ID와 화면 표시용 상태의 차이를 설명해 보세요.</p>
+      <p className="hint">
+        Timer ID와 화면 표시용 상태의 차이를 설명해 보세요.
+      </p>
     </div>
   );
 }

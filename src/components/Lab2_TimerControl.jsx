@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // LAB 2 (Slide 10): Timer Start / Stop / Reset
 export default function Lab2TimerControl() {
@@ -10,9 +10,9 @@ export default function Lab2TimerControl() {
     // TODO 2: running이 true면 setInterval로 1초마다 count 증가
     // TODO 3: Cleanup에서 clearInterval 호출
     if (!running) return;
-    
+
     const id = setInterval(() => {
-      setCount(prev => prev + 1);
+      setCount((prev) => prev + 1);
     }, 1000);
     return () => clearInterval(id);
   }, [running]);
@@ -22,17 +22,34 @@ export default function Lab2TimerControl() {
     setRunning(false);
     setCount(0);
   };
+  const formatTime = (sec) => {
+    const m = String(Math.floor(sec / 60)).padStart(2, "0");
+    const s = String(sec % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  };
 
   return (
     <div>
-      <p className="status">상태: {running ? 'Running' : 'Stopped'}</p>
-      <div className="count">{count}</div>
+      <p className="status">상태: {running ? "Running" : "Stopped"}</p>
+      <div className="count">{formatTime(count)}</div>
       <div className="controls">
-        <button onClick={() => setRunning(true)} disabled={running}>Start</button>
-        <button className="secondary" onClick={() => setRunning(false)} disabled={!running}>Stop</button>
-        <button className="secondary" onClick={reset}>Reset</button>
+        <button onClick={() => setRunning(true)} disabled={running}>
+          Start
+        </button>
+        <button
+          className="secondary"
+          onClick={() => setRunning(false)}
+          disabled={!running}
+        >
+          Stop
+        </button>
+        <button className="secondary" onClick={reset}>
+          Reset
+        </button>
       </div>
-      <p className="hint">Start/Stop 버튼의 State 변경과 Effect 실행의 관계를 확인하세요.</p>
+      <p className="hint">
+        Start/Stop 버튼의 State 변경과 Effect 실행의 관계를 확인하세요.
+      </p>
     </div>
   );
 }
