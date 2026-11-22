@@ -25,9 +25,11 @@ npm run dev
 5. LAB 2와 LAB 4에서 Timer를 관리하는 방식의 차이는?
 
 # Project Information: 
-- 프로젝트 소개
-- Starter Project 정보
+- 프로젝트 소개: React의 useEffect, Dependency Array, Cleanup를 타이머로 직접 실습해 불 수 있는 프로젝트
+- Starter Project 정보: 제공받은 소스를 기반으로 App.jsx를 수정하고 Lab1~Lab4를 완성했습니다.
 # Installation: 설치·실행 방법 및 실행 화면
+- fork --> clone --> npm install --> npm run dev
+![React Hooks Lab 실행 화면](./assets/app-preview.png)
 # Source Code Exploration: 
 ## Project Structure: App.jsx와 주요 Lab 컴포넌트의 역할
 1. App.jsx: UI 랜더링, Lab 컴포넌트 동적 마운트, 언마운트
