@@ -94,11 +94,16 @@ npm run dev
 - Lab3_inputFocus.jsx
 - Lab4_RefTimper.jsx
 # Deployment: 실제 접근 가능한 Vercel URL
-
+- https://week12-starter-project-3j7w.vercel.app
 # Weekly Review:
 ## 새롭게 배운 내용 3가지
-1. 
-2. 
-3. 
+1. useEffect의 Dependency Array와 Cleanup의 구조와 사용방법을 배웠습니다.
+2. useState와 useRef의 차이점을 배웠습니다.
+3. Lab 2와 Lab 4를 비교하면서 상태기반 제어와 Ref 기반 제어의 차이점을 배웠습니다.
 ## 어려웠던 점과 해결 방법
+- 다른 과제들과 마찬가지로 처음에 코드 이해하고 분석하는 것과 새로운 기능 넣는 것이 가장 어려웠던것 같습니다.
+- AI에게 모르는 것을 디테일하게 물어보면서 코드를 이해하면서 해결했습니다.
 ## AI 활용 내용 및 느낀 점
+- 코드 분석과 이해에 디테일 적인 부분과 헷갈리는 부분에 도움을 받았습니다.
+- 디버깅을 하다가 막혀서 진전이 없을때 도움을 받았습니다.
+- 새로운 기능 추가할때 어떤식으로 접근해야되는지 조언을 받았습니다.
